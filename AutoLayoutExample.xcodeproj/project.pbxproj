@@ -12,6 +12,7 @@
 		6DC15B021DFE005B00E47E52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DC15B001DFE005B00E47E52 /* Main.storyboard */; };
 		6DC15B041DFE005B00E47E52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DC15B031DFE005B00E47E52 /* Assets.xcassets */; };
 		6DC15B071DFE005B00E47E52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DC15B051DFE005B00E47E52 /* LaunchScreen.storyboard */; };
+		6DC15B0F1DFE02CA00E47E52 /* example.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 6DC15B0E1DFE02CA00E47E52 /* example.PNG */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		6DC15B031DFE005B00E47E52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6DC15B061DFE005B00E47E52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6DC15B081DFE005B00E47E52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6DC15B0E1DFE02CA00E47E52 /* example.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = example.PNG; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		6DC15AFB1DFE005B00E47E52 /* AutoLayoutExample */ = {
 			isa = PBXGroup;
 			children = (
+				6DC15B0E1DFE02CA00E47E52 /* example.PNG */,
 				6DC15AFC1DFE005B00E47E52 /* AppDelegate.swift */,
 				6DC15AFE1DFE005B00E47E52 /* ViewController.swift */,
 				6DC15B001DFE005B00E47E52 /* Main.storyboard */,
@@ -123,6 +126,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DC15B0F1DFE02CA00E47E52 /* example.PNG in Resources */,
 				6DC15B071DFE005B00E47E52 /* LaunchScreen.storyboard in Resources */,
 				6DC15B041DFE005B00E47E52 /* Assets.xcassets in Resources */,
 				6DC15B021DFE005B00E47E52 /* Main.storyboard in Resources */,
