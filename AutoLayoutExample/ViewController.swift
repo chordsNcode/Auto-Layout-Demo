@@ -93,6 +93,28 @@ class ViewController: UIViewController {
         
         followingButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(followingButton)
+        
+        // constraints
+        
+        let views: [String: Any] = ["superview": view,
+                                    "profileImage": profileImage,
+                                    "settingsButton": settingsButton,
+                                    "nameLabel": nameLabel,
+                                    "handleLabel": handleLabel,
+                                    "titleLabel": titleLabel,
+                                    "locationLabel": locationLabel,
+                                    "websiteButton": websiteButton,
+                                    "followersButton": followersButton,
+                                    "followingButton": followingButton,
+                                    ]
+        
+        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-80-[profileImage(87)]-5-[nameLabel][handleLabel]-10-[titleLabel]-2-[locationLabel]-10-[websiteButton]-(<=1)-[superview]", options: .alignAllCenterX, metrics: nil, views: views))
+        
+        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[websiteButton]-10-[followersButton]", options: [], metrics: nil, views: views))
+        
+        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[settingsButton]-30-[profileImage(87)]", options: .alignAllCenterY, metrics: nil, views: views))
+        
+        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[followersButton(==followingButton@250)][followingButton(==followersButton)]|", options: .alignAllCenterY, metrics: nil, views: views))
     }
 }
 
