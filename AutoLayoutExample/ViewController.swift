@@ -55,36 +55,43 @@ class ViewController: UIViewController {
         locationLabel.font = UIFont.italicSystemFont(ofSize: 17)
         locationLabel.text = "Boston, MA"
         
-        websiteButton.titleLabel?.text = "http://mattdias.com"
+        websiteButton.setTitle("http://mattdias.com", for: .normal)
         
-        followingButton.titleLabel?.text = "14 FOLLOWERS"
+        followersButton.setTitle("14 FOLLOWERS", for: .normal)
+        followersButton.backgroundColor = UIColor(colorLiteralRed: 64/255, green: 64/255, blue: 64/255, alpha: 1.0)
+        followersButton.tintColor = UIColor.white
+        
+        followingButton.setTitle("40 FOLLOWING", for: .normal)
         followingButton.backgroundColor = UIColor(colorLiteralRed: 64/255, green: 64/255, blue: 64/255, alpha: 1.0)
         followingButton.tintColor = UIColor.white
     }
     
     private func setupConstraints() {
-//        profileImage.translatesAutoresizingMaskIntoConstraints = false
+        profileImage.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(profileImage)
         
-//        settingsButton.translatesAutoresizingMaskIntoConstraints = false
+        settingsButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(settingsButton)
         
-//        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(nameLabel)
         
-//        handleLabel.translatesAutoresizingMaskIntoConstraints = false
+        handleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(handleLabel)
 
-//        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(titleLabel)
         
-//        locationLabel.translatesAutoresizingMaskIntoConstraints = false
+        locationLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(locationLabel)
         
-//        websiteButton.translatesAutoresizingMaskIntoConstraints = false
+        websiteButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(websiteButton)
 
-//        followingButton.translatesAutoresizingMaskIntoConstraints = false
+        followersButton.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(followersButton)
+        
+        followingButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(followingButton)
     }
 }
