@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Anchorage
 
 class ViewController: UIViewController {
     
@@ -19,6 +20,26 @@ class ViewController: UIViewController {
     var websiteButton = UIButton()
     var followersButton = UIButton()
     var followingButton = UIButton()
+
+	var textBelowConstraints: [NSLayoutConstraint] = []
+	var textBesideConstraints: [NSLayoutConstraint] = []
+
+	var textBelow = true {
+		didSet {
+			if textBelow {
+				NSLayoutConstraint.deactivate(textBesideConstraints)
+				NSLayoutConstraint.activate(textBelowConstraints)
+			}
+			else {
+				NSLayoutConstraint.deactivate(textBelowConstraints)
+				NSLayoutConstraint.activate(textBesideConstraints)
+			}
+
+			UIView.animate(withDuration: 0.3) { 
+				self.view.layoutIfNeeded()
+			}
+		}
+	}
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +59,7 @@ class ViewController: UIViewController {
         profileImage.layer.cornerRadius = 43.5
         
         settingsButton.setImage(#imageLiteral(resourceName: "settingsIcon"), for: .normal)
+		settingsButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         
         nameLabel.textColor = UIColor.white
         nameLabel.font = UIFont.boldSystemFont(ofSize: 17.0)
@@ -67,50 +89,57 @@ class ViewController: UIViewController {
     }
     
     private func setupConstraints() {
-        profileImage.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(profileImage)
-        
-        settingsButton.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(settingsButton)
-        
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(nameLabel)
-        
-        handleLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(handleLabel)
+		profileImage.translatesAutoresizingMaskIntoConstraints = false
+		self.view.addSubview(profileImage)
 
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(titleLabel)
-        
-        locationLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(locationLabel)
-        
-        websiteButton.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(websiteButton)
+		settingsButton.translatesAutoresizingMaskIntoConstraints = false
+		self.view.addSubview(settingsButton)
 
-        followersButton.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(followersButton)
-        
-        followingButton.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(followingButton)
-        
-        self.view.addConstraint(NSLayoutConstraint(item: profileImage, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 80))
-        self.view.addConstraint(NSLayoutConstraint(item: profileImage, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 87))
-        self.view.addConstraint(NSLayoutConstraint(item: profileImage, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 87))
-        self.view.addConstraint(NSLayoutConstraint(item: profileImage, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0))
-        
-        self.view.addConstraint(NSLayoutConstraint(item: settingsButton, attribute: .centerY, relatedBy: .equal, toItem: profileImage, attribute: .centerY, multiplier: 1, constant: 0))
-        self.view.addConstraint(NSLayoutConstraint(item: settingsButton, attribute: .trailing, relatedBy: .equal, toItem: profileImage, attribute: .leading, multiplier: 1, constant: -60))
-        
-        self.view.addConstraint(NSLayoutConstraint(item: nameLabel, attribute: .top, relatedBy: .equal, toItem: profileImage, attribute: .bottom, multiplier: 1, constant: 10))
-        self.view.addConstraint(NSLayoutConstraint(item: nameLabel, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0))
-        
-        self.view.addConstraint(NSLayoutConstraint(item: handleLabel, attribute: .top, relatedBy: .equal, toItem: nameLabel, attribute: .bottom, multiplier: 1, constant: 0))
-        self.view.addConstraint(NSLayoutConstraint(item: handleLabel, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0))
-        
-        self.view.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal, toItem: handleLabel, attribute: .bottom, multiplier: 1, constant: 10))
-        self.view.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0))
-        
+		nameLabel.translatesAutoresizingMaskIntoConstraints = false
+		self.view.addSubview(nameLabel)
+
+		handleLabel.translatesAutoresizingMaskIntoConstraints = false
+		self.view.addSubview(handleLabel)
+
+		titleLabel.translatesAutoresizingMaskIntoConstraints = false
+		self.view.addSubview(titleLabel)
+
+		locationLabel.translatesAutoresizingMaskIntoConstraints = false
+		self.view.addSubview(locationLabel)
+
+		websiteButton.translatesAutoresizingMaskIntoConstraints = false
+		self.view.addSubview(websiteButton)
+
+		followersButton.translatesAutoresizingMaskIntoConstraints = false
+		self.view.addSubview(followersButton)
+
+		followingButton.translatesAutoresizingMaskIntoConstraints = false
+		self.view.addSubview(followingButton)
+
+		profileImage.topAnchor == view.topAnchor + 80
+		profileImage.heightAnchor == 87
+		profileImage.widthAnchor == profileImage.heightAnchor
+		profileImage.centerXAnchor == view.centerXAnchor
+
+		settingsButton.centerYAnchor == profileImage.centerYAnchor
+		settingsButton.trailingAnchor >= profileImage.leadingAnchor - 60
+
+		textBelowConstraints.append(nameLabel.topAnchor == profileImage.bottomAnchor + 10)
+		textBelowConstraints.append(nameLabel.centerXAnchor == view.centerXAnchor)
+
+		handleLabel.topAnchor == nameLabel.bottomAnchor
+		handleLabel.centerXAnchor == nameLabel.centerXAnchor
+
+		textBelowConstraints.append(titleLabel.topAnchor == handleLabel.bottomAnchor + 10)
+		titleLabel.centerXAnchor == view.centerXAnchor
+
+		textBesideConstraints = batch(active: false) {
+			titleLabel.topAnchor == profileImage.bottomAnchor + 10
+			nameLabel.topAnchor == profileImage.topAnchor
+			nameLabel.leadingAnchor == profileImage.trailingAnchor + 30
+		}
+
         self.view.addConstraint(NSLayoutConstraint(item: locationLabel, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1, constant: 0))
         self.view.addConstraint(NSLayoutConstraint(item: locationLabel, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0))
         
@@ -122,10 +151,16 @@ class ViewController: UIViewController {
         self.view.addConstraint(NSLayoutConstraint(item: followersButton, attribute: .trailing, relatedBy: .equal, toItem: followingButton, attribute: .leading, multiplier: 1, constant: 0))
         self.view.addConstraint(NSLayoutConstraint(item: followingButton, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0))
         self.view.addConstraint(NSLayoutConstraint(item: followersButton, attribute: .height, relatedBy: .equal, toItem: followingButton, attribute: .height, multiplier: 1, constant: 0))
-        self.view.addConstraint(NSLayoutConstraint(item: followersButton, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 0.5, constant: 0))
+
+		followersButton.widthAnchor == view.widthAnchor * 0.5
+
         self.view.addConstraint(NSLayoutConstraint(item: followingButton, attribute: .width, relatedBy: .equal, toItem: followersButton, attribute: .width, multiplier: 1, constant: 0))
         self.view.addConstraint(NSLayoutConstraint(item: followingButton, attribute: .centerY, relatedBy: .equal, toItem: followersButton, attribute: .centerY, multiplier: 1, constant: 0
         ))
     }
+
+	@objc func buttonTapped() {
+		textBelow = !textBelow
+	}
 }
 
