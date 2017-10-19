@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="KkJ-0o-gVm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="KkJ-0o-gVm">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -32,7 +32,7 @@
         <!--Matt Dias-->
         <scene sceneID="QPe-OD-GRZ">
             <objects>
-                <viewController id="aOe-dG-i5G" sceneMemberID="viewController">
+                <viewController id="aOe-dG-i5G" customClass="ViewController" customModule="AutoLayoutExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RDF-Rm-DqN"/>
                         <viewControllerLayoutGuide type="bottom" id="qga-2c-Qlo"/>
@@ -57,6 +57,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5v-w3-g9s">
                                 <rect key="frame" x="33" y="102.5" width="48" height="48"/>
                                 <state key="normal" image="settingsIcon"/>
+                                <connections>
+                                    <action selector="gearTapped:" destination="aOe-dG-i5G" eventType="touchUpInside" id="Olx-ix-HUV"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Matt Dias" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ib4-3P-EhE">
                                 <rect key="frame" x="149.5" y="178" width="76" height="21"/>
@@ -160,6 +163,11 @@
                     <navigationItem key="navigationItem" title="Matt Dias" id="8Lc-0g-pik">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="LO2-VO-umV"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="image" destination="Mco-6s-Fe7" id="jD2-PS-HrD"/>
+                        <outlet property="imageHeightConstraint" destination="nYg-Ku-ea0" id="Xl1-dm-TFE"/>
+                        <outlet property="imageWidthConstraint" destination="CPG-Uk-29i" id="yjW-UM-qDR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jyY-aD-V08" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
